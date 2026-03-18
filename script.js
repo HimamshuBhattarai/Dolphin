@@ -155,32 +155,90 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------- Registration Form Handler ----------
     const registerForm = document.getElementById('register-form');
     if (registerForm) {
-        registerForm.addEventListener('submit', (e) => {
+        registerForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = registerForm.querySelector('.btn-submit');
-            btn.textContent = 'SUBMITTED ✓';
-            btn.style.background = '#00c9a7';
+            const defaultText = 'SUBMIT REQUEST';
+            btn.classList.remove('is-submitted', 'is-error');
+            btn.classList.add('is-submitting');
+            btn.textContent = 'SENDING...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(registerForm.action, {
+                    method: 'POST',
+                    body: new FormData(registerForm),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                btn.classList.remove('is-submitting');
+
+                if (response.ok) {
+                    btn.classList.add('is-submitted');
+                    btn.textContent = 'SUBMITTED ✓';
+                    registerForm.reset();
+                } else {
+                    btn.classList.add('is-error');
+                    btn.textContent = 'TRY AGAIN';
+                }
+            } catch (error) {
+                btn.classList.remove('is-submitting');
+                btn.classList.add('is-error');
+                btn.textContent = 'TRY AGAIN';
+            }
+
             setTimeout(() => {
-                btn.textContent = 'SUBMIT REQUEST';
-                btn.style.background = '';
-                registerForm.reset();
-            }, 2500);
+                btn.classList.remove('is-submitting', 'is-submitted', 'is-error');
+                btn.textContent = defaultText;
+                btn.disabled = false;
+            }, 2200);
         });
     }
 
     // ---------- Contact Form Handler ----------
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = contactForm.querySelector('.btn-accent');
-            btn.textContent = 'MESSAGE SENT ✓';
-            btn.style.background = '#00c9a7';
+            const defaultText = 'SEND MESSAGE';
+            btn.classList.remove('is-submitted', 'is-error');
+            btn.classList.add('is-submitting');
+            btn.textContent = 'SENDING...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                btn.classList.remove('is-submitting');
+
+                if (response.ok) {
+                    btn.classList.add('is-submitted');
+                    btn.textContent = 'SUBMITTED ✓';
+                    contactForm.reset();
+                } else {
+                    btn.classList.add('is-error');
+                    btn.textContent = 'TRY AGAIN';
+                }
+            } catch (error) {
+                btn.classList.remove('is-submitting');
+                btn.classList.add('is-error');
+                btn.textContent = 'TRY AGAIN';
+            }
+
             setTimeout(() => {
-                btn.textContent = 'SEND MESSAGE';
-                btn.style.background = '';
-                contactForm.reset();
-            }, 2500);
+                btn.classList.remove('is-submitting', 'is-submitted', 'is-error');
+                btn.textContent = defaultText;
+                btn.disabled = false;
+            }, 2200);
         });
     }
 

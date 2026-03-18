@@ -148,6 +148,27 @@ ul {
     box-shadow: 0 8px 24px rgba(31, 143, 78, 0.3);
 }
 
+.btn-accent:disabled {
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.btn-accent.is-submitting {
+    background: linear-gradient(90deg, var(--primary-dark) 0%, #37b56d 50%, var(--primary-dark) 100%);
+    background-size: 220% 100%;
+    animation: submitShimmer 1s linear infinite;
+}
+
+.btn-accent.is-submitted {
+    background: linear-gradient(135deg, #12a46f, #08c58b);
+    animation: submitPop 320ms ease-out;
+}
+
+.btn-accent.is-error {
+    background: linear-gradient(135deg, #d14646, #b33232);
+    animation: submitPop 320ms ease-out;
+}
+
 .btn.large {
     padding: 16px 48px;
     font-size: 1rem;
@@ -522,6 +543,48 @@ ul {
 .btn-submit:hover {
     background: var(--dark-alt);
     transform: translateY(-1px);
+}
+
+.btn-submit:disabled {
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.btn-submit.is-submitting {
+    background: linear-gradient(90deg, var(--dark) 0%, #556070 50%, var(--dark) 100%);
+    background-size: 220% 100%;
+    animation: submitShimmer 1s linear infinite;
+}
+
+.btn-submit.is-submitted {
+    background: linear-gradient(135deg, #12a46f, #08c58b);
+    animation: submitPop 320ms ease-out;
+}
+
+.btn-submit.is-error {
+    background: linear-gradient(135deg, #d14646, #b33232);
+    animation: submitPop 320ms ease-out;
+}
+
+@keyframes submitShimmer {
+    from {
+        background-position: 100% 0;
+    }
+    to {
+        background-position: -100% 0;
+    }
+}
+
+@keyframes submitPop {
+    0% {
+        transform: scale(0.98);
+    }
+    60% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .about-text {
@@ -1343,6 +1406,44 @@ ul {
 }
 
 @media (max-width: 768px) {
+    .about-section,
+    .contact-section {
+        padding: 56px 0;
+    }
+
+    .about-grid,
+    .contact-grid {
+        gap: 28px;
+    }
+
+    .register-card {
+        min-height: auto;
+    }
+
+    .register-card-content {
+        padding: 24px 18px;
+    }
+
+    .register-title {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+    }
+
+    #register-form input,
+    #register-form textarea,
+    #contact-form input,
+    #contact-form textarea {
+        font-size: 16px;
+    }
+
+    .contact-form-wrap {
+        padding: 24px 18px;
+    }
+
+    #cf-submit {
+        width: 100%;
+    }
+
     .top-bar-inner {
         flex-direction: column;
         text-align: center;
@@ -1413,6 +1514,29 @@ ul {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0 14px;
+    }
+
+    .about-section,
+    .contact-section {
+        padding: 44px 0;
+    }
+
+    .register-card-content,
+    .contact-form-wrap {
+        padding: 20px 14px;
+    }
+
+    .register-subtitle,
+    .contact-detail p,
+    #register-form input,
+    #register-form textarea,
+    #contact-form input,
+    #contact-form textarea {
+        font-size: 0.95rem;
+    }
+
     .hero-title {
         font-size: 1.6rem;
         letter-spacing: 2px;

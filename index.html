@@ -29,10 +29,10 @@
                 </a>
                 <a href="tel:+97715275111" class="contact-item">
                     <span class="contact-icon"><i class="fas fa-phone-alt"></i></span>
-                    977 1 5275111
+                    01-5174015
                 </a>
                 <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/p/Dolphin-English-Secondary-School-Godawari-100078825498823/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
@@ -88,11 +88,11 @@
                 <div class="register-card-content">
                     <p class="register-subtitle">Register now for</p>
                     <h3 class="register-title">More Info.</h3>
-                    <form id="register-form">
-                        <input type="text" placeholder="Your Name." id="reg-name" required>
-                        <input type="tel" placeholder="Your Number." id="reg-phone" required>
-                        <input type="email" placeholder="Email Address." id="reg-email" required>
-                        <textarea placeholder="Your Message." id="reg-message"></textarea>
+                    <form id="register-form" action="https://formspree.io/f/xgonpgnj" method="post">
+                        <input type="text" placeholder="Your Name." id="reg-name" name="name" required>
+                        <input type="tel" placeholder="Your Number." id="reg-phone" name="phone" required>
+                        <input type="email" placeholder="Email Address." id="reg-email" name="email" required>
+                        <textarea placeholder="Your Message." id="reg-message" name="message"></textarea>
                         <button type="submit" class="btn btn-submit" id="reg-submit">SUBMIT REQUEST</button>
                     </form>
                 </div>
@@ -130,7 +130,7 @@
                     <div class="why-item" id="why-1">
                         <div class="why-icon-wrap"><i class="fas fa-award"></i><span class="why-num">01</span></div>
                         <div class="why-item-text">
-                            <strong>20+ Years of Excellence in Education.</strong>
+                            <strong>25+ Years of Excellence in Education.</strong>
                         </div>
                     </div>
                     <div class="why-item" id="why-2">
@@ -384,13 +384,13 @@
                 </div>
             </div>
             <div class="contact-form-wrap">
-                <form id="contact-form">
+                <form id="contact-form" method="post" action="https://formspree.io/f/xgonpgnj">
                     <div class="form-row">
-                        <input type="text" placeholder="Your Name" id="cf-name" required>
-                        <input type="email" placeholder="Your Email" id="cf-email" required>
+                        <input type="text" placeholder="Your Name" id="cf-name" name="name" required>
+                        <input type="email" placeholder="Your Email" id="cf-email" name="email" required>
                     </div>
-                    <input type="text" placeholder="Subject" id="cf-subject" required>
-                    <textarea placeholder="Your Message" id="cf-message" rows="5" required></textarea>
+                    <input type="text" placeholder="Subject" id="cf-subject" name="subject" required>
+                    <textarea placeholder="Your Message" id="cf-message" name="message" rows="5" required></textarea>
                     <button type="submit" class="btn btn-accent" id="cf-submit">SEND MESSAGE</button>
                 </form>
             </div>
