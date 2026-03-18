@@ -33,6 +33,53 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ---------- Hero Slider ----------
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    const sliderPrev = document.getElementById('slider-prev');
+    const sliderNext = document.getElementById('slider-next');
+    let activeSlide = 0;
+    let heroAutoSlide = null;
+
+    function setHeroSlide(index) {
+        if (!heroSlides.length) return;
+
+        activeSlide = (index + heroSlides.length) % heroSlides.length;
+        heroSlides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === activeSlide);
+        });
+    }
+
+    function startHeroAutoSlide() {
+        if (heroSlides.length < 2) return;
+
+        if (heroAutoSlide) {
+            clearInterval(heroAutoSlide);
+        }
+
+        heroAutoSlide = setInterval(() => {
+            setHeroSlide(activeSlide + 1);
+        }, 5000);
+    }
+
+    if (heroSlides.length) {
+        setHeroSlide(0);
+        startHeroAutoSlide();
+
+        if (sliderPrev) {
+            sliderPrev.addEventListener('click', () => {
+                setHeroSlide(activeSlide - 1);
+                startHeroAutoSlide();
+            });
+        }
+
+        if (sliderNext) {
+            sliderNext.addEventListener('click', () => {
+                setHeroSlide(activeSlide + 1);
+                startHeroAutoSlide();
+            });
+        }
+    }
+
     // ---------- Active Nav Link on Scroll ----------
     const sections = document.querySelectorAll('section[id]');
     const navLinksAll = document.querySelectorAll('.nav-links a');
@@ -244,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---------- Parallax on Hero ----------
     window.addEventListener('scroll', () => {
-        const hero = document.querySelector('.hero-slide');
+        const hero = document.querySelector('.hero-slide.active');
         if (hero) {
             const scrolled = window.scrollY;
             hero.style.backgroundPositionY = scrolled * 0.4 + 'px';

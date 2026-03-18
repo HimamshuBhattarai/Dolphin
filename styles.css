@@ -375,8 +375,9 @@ ul {
 .hero-slide {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -392,6 +393,8 @@ ul {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.5) 100%);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
 }
 
 .hero-content {
